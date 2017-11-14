@@ -49,6 +49,12 @@ if [ -n "$HAVE_MULTITENANT" ]; then
        /usr/local/openresty/nginx/conf/optional/endpoints/tenantadm.nginx.conf
 fi
 
+# Disabled by default
+if [ -n "$DONT_ENFORCE_SSL" ]; then
+    sed -i -e "s/error_page 497 =301 https:\/\/$http_host$request_uri;//" /usr/local/openresty/nginx/conf/nginx.conf
+fi
+
+
 DNS_NAMES=${DNS_NAMES:-mender-useradm mender-inventory mender-deployments \
                                       mender-device-auth mender-device-adm \
                                       mender-gui}
