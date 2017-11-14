@@ -51,7 +51,7 @@ fi
 
 # Disabled by default
 if [ -n "$DONT_ENFORCE_SSL" ]; then
-    sed -i -e "s/error_page 497 =301 https:\/\/$http_host$request_uri;//" /usr/local/openresty/nginx/conf/nginx.conf
+    sed -i -e 's/error_page 497 =301 https:\/\/$http_host$request_uri;//' /usr/local/openresty/nginx/conf/nginx.conf
 fi
 
 
